@@ -4,10 +4,12 @@ import Header from './Header'
 
 const Courseview = () => {
     var [course,setCourse]=useState([])
-    axios.get("http://mylinkurcodesapp.herokuapp.com/getcourses").then(
+    var [loadStatus,setLoadStatus]=useState(true)
+    axios.get("https://mylinkurcodesapp.herokuapp.com/getcourses").then(
         (response)=>{
             console.log(response.data)
             setCourse(response.data)
+            setLoadStatus(false)
 
         }
     )
@@ -21,7 +23,9 @@ const Courseview = () => {
      <div className="col col-12 col-sm-12 col-md-12 col-lg-12">
   <div className="row g-3">
   <div className='col col-12 col-sm-12 col-md-12 col-lg-12'>
-  <table class="table table-success">
+      {loadStatus? <div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>:<table class="table table-success">
                      <thead>
                          <tr>
                             
@@ -45,7 +49,8 @@ const Courseview = () => {
 
          } )}
            </tbody>
-</table>
+</table>}
+  
          </div>    
            </div>
            </div>
