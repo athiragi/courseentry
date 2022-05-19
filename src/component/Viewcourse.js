@@ -1,9 +1,18 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import Header from './Header'
 
 const Courseview = () => {
-    var course=[{"_id":"6285a2a31887dc001619415c","courseTitle":"Python Django Internship","courseDescription":"Internship programme","courseDuration":"3 months","courseVenue":"ONLINE","courseDate":"02/01/2023"},{"_id":"6285a2c21887dc001619415d","courseTitle":"MERN Stack","courseDescription":"Internship programme","courseDuration":"6 months","courseVenue":"ONLINE","courseDate":"02/06/2022"}]
-  return (
+    var [course,setCourse]=useState([])
+    axios.get("http://mylinkurcodesapp.herokuapp.com/getcourses").then(
+        (response)=>{
+            console.log(response.data)
+            setCourse(response.data)
+
+        }
+    )
+
+         return (
       
     <div>
         <Header/>
