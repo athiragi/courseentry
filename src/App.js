@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import Courseentry from './component/Courseentry';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
+import Viewcourse from './component/Viewcourse';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
      <BrowserRouter>
      <Routes>
        <Route path="/" exact element={<Courseentry/>}/>
+       <Route path="/view" exact element={<Viewcourse/>}/>
+
 
 
      </Routes>
